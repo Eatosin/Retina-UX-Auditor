@@ -1,10 +1,9 @@
 # 1. Base Image
 FROM python:3.11-slim
 
-# 2. System Setup (CRITICAL for OpenCV)
-# We install the GL libraries needed for image processing
+# 2. System Setup (Updated for Debian Bookworm/Trixie)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
