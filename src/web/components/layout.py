@@ -1,4 +1,7 @@
-from fasthtml.common import *
+from fasthtml.common import (
+    Html, Head, Title, Meta, Link, Style, Script, 
+    Body, Header, H1, P, Main, Footer
+)
 
 def Layout(title: str, content: list):
     """
@@ -32,7 +35,7 @@ def Layout(title: str, content: list):
             ),
             Main(*content),
             Footer(
-                P("Powered by OpenCV + Gemini 2.5 model", style="text-align: center; opacity: 0.5; font-size: 0.8rem;")
+                P("Powered by OpenCV and Gemini 2.5 model", style="text-align: center; opacity: 0.5; font-size: 0.8rem;")
             )
         )
     )
