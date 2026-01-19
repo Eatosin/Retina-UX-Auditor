@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from typing import Optional, Tuple
+import base64
 
 def load_image_from_bytes(image_bytes: bytes) -> np.ndarray:
     """
@@ -37,3 +38,15 @@ def convert_to_grayscale(image: np.ndarray) -> np.ndarray:
     Converts BGR image to Grayscale for edge detection.
     """
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+def encode_image_to_base64(image: np.ndarray) -> str:
+    """
+    Encodes an OpenCV image (numpy array) to a Base64 PNG string
+    for display in HTML img tags.
+    """
+    success, buffer = cv2.imencode(".png", image)
+    if not success:
+        raise ValueError("Could not encode image")
+    
+    b64_string = base64.b64encode(buffer).decode("utf-8")
+    return f"data:image/png;base64,{b64_string}"
