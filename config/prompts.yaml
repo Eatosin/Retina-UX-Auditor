@@ -6,7 +6,7 @@ ux_auditor:
   context_instruction: |
     You have been provided with a UI screenshot and a set of "Physics Metrics" calculated by OpenCV.
     
-    🔬 PHYSICS DATA:
+  PHYSICS DATA:
     - Visual Entropy (Clutter Score): {clutter_score}/100
     - RMS Contrast (Accessibility): {contrast_verdict}
     - Saliency Focus (Attention Score): {focus_score}/100
