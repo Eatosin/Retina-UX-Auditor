@@ -40,6 +40,7 @@ class DesignCritic:
         model = self._get_model()
         
         # 1. Hydrate the Prompt with Dynamic Metrics
+        # Use str() to ensure safe fallback if metrics are missing
         context = self.prompt_config["context_instruction"].format(
             clutter_score=metrics.get('clutter_score', 'N/A'),
             contrast_verdict=metrics.get('contrast_verdict', 'N/A'),
@@ -56,7 +57,8 @@ class DesignCritic:
 
         try:
             response = model.generate_content(full_prompt)
-            return response.text
+            # FIX: Explicitly cast to string to satisfy MyPy
+            return str(response.text)
         except Exception as e:
             logger.error(f"AI Analysis Failed: {e}")
             return "AI Analysis unavailable due to API limits or error."
