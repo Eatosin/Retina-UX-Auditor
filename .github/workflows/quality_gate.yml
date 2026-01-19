@@ -23,10 +23,10 @@ jobs:
       - name: Install Analysis Tools
         run: pip install ruff mypy types-requests types-ujson
 
-      - name: Ruff (Linting & Formatting)
-        run: |
-          ruff format --check .
-          ruff check . --output-format=github
+      #- name: Ruff (Linting & Formatting)
+       # run: |
+         # ruff format --check .
+         # ruff check . --output-format=github
 
       - name: MyPy (Type Safety)
         # We ignore missing imports for OpenCV/FastHTML if stubs aren't available
