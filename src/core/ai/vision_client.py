@@ -20,7 +20,7 @@ class DesignCritic:
             raise ValueError("GEMINI_API_KEY not found.")
         genai.configure(api_key=api_key)
         
-        # Load SOTA Prompt Strategy
+        # Load SOTA Prompt Strategy.
         self.prompt_config = load_prompt_config("ux_auditor")
 
     def _get_model(self):
