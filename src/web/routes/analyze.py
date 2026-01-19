@@ -1,4 +1,4 @@
-from fasthtml.common import *
+from fasthtml.common import Div, Form, Label, Input, Button, Grid, H3, P, Img, H4
 from src.utils.image_processing import load_image_from_bytes, resize_image, encode_image_to_base64
 from src.core.physics.entropy import EntropyEngine
 from src.core.physics.contrast import ContrastEngine
@@ -42,7 +42,6 @@ def analyze_route(app):
             file_bytes = await file.read()
             
             # 1. Preprocessing
-            # We resize to max 1024px width for speed
             original_img = load_image_from_bytes(file_bytes)
             processed_img = resize_image(original_img)
             
@@ -64,7 +63,6 @@ def analyze_route(app):
                 "contrast_verdict": contrast_verdict,
                 "focus_score": focus_score
             }
-            # We send the original bytes to Gemini for clarity
             ai_report = ai_critic.analyze(file_bytes, metrics)
             
             # 5. Render Results
