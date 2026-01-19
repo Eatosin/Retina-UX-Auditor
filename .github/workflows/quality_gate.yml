@@ -1,0 +1,33 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: ["main"]
+    paths: ["src/**", "tests/**", "pyproject.toml", "requirements.txt"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint-and-type:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Analysis Tools
+        run: pip install ruff mypy types-requests types-ujson
+
+      - name: Ruff (Linting & Formatting)
+        run: |
+          ruff format --check .
+          ruff check . --output-format=github
+
+      - name: MyPy (Type Safety)
+        # We ignore missing imports for OpenCV/FastHTML if stubs aren't available
+        run: mypy src/ --ignore-missing-imports
