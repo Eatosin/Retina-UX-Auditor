@@ -1,0 +1,44 @@
+name: Test Suite
+
+on:
+  push:
+    branches: ["main"]
+    paths: ["src/**", "tests/**", "requirements.txt"]
+  pull_request:
+    branches: ["main"]
+  workflow_run:
+    workflows: ["Quality Gate"]
+    types:
+      - completed
+
+jobs:
+  unit-tests:
+    # Only run if Quality Gate passed
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install System Dependencies (OpenCV)
+        # SOTA: Install specific libs required for Computer Vision on Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Test Runners
+        run: pip install pytest pytest-asyncio httpx
+
+      - name: Run Pytest
+        # Adds current directory to python path so 'src' imports work
+        run: python -m pytest tests/ -v
