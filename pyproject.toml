@@ -1,1 +1,44 @@
-# Modern Python Build Config
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retina_ux_auditor"
+version = "1.0.0"
+description = "Physics-Informed UI/UX Auditing Engine"
+authors = [
+  { name="Owadokun Tosin Tobi", email="tosinowadokun11@gmail.com" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "python-fasthtml>=0.1.0",
+    "opencv-python-headless>=4.9.0",
+    "google-generativeai>=0.5.0",
+]
+
+[tool.ruff]
+# The Modern Linter Config
+line-length = 100
+target-version = "py311"
+exclude = ["venv", ".git", "__pycache__"]
+
+[tool.ruff.lint]
+# E: Errors, F: Pyflakes, I: Imports, W: Warnings
+select = ["E", "F", "I", "W"]
+ignore = ["E501"] # Ignore line length violations (let black handle it)
+
+[tool.mypy]
+# Strict Type Checking
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true  # Critical for CV2/FastHTML which lack stubs
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+python_files = "test_*.py"
+python_path = "."
