@@ -41,4 +41,5 @@ class EntropyEngine:
         # Scaling factor of 5 maps 0-20% density to 0-100 score.
         normalized_score = min(100.0, density * 5.0)
         
-        return round(normalized_score, 2)
+        # FIX: Explicitly cast numpy float to python float
+        return float(round(normalized_score, 2))
