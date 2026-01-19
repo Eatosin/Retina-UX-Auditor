@@ -28,10 +28,9 @@ jobs:
           cache: "pip"
 
       - name: Install System Dependencies (OpenCV)
-        # SOTA: Install specific libs required for Computer Vision on Linux
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+          sudo apt-get install -y libgl1 libglib2.0-0
 
       - name: Install Python Dependencies
         run: pip install -r requirements.txt
