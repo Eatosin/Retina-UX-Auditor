@@ -21,7 +21,7 @@ jobs:
           cache: "pip"
 
       - name: Install Analysis Tools
-        run: pip install ruff mypy types-requests types-ujson
+        run: pip install ruff mypy types-requests types-ujson types-PyYAML
 
       #- name: Ruff (Linting & Formatting)
        # run: |
