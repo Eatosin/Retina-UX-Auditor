@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👁️ Retina
+# **Retina**
 ### *The Visual Physics Engine for UX Audits*
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
