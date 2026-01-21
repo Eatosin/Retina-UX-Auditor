@@ -44,14 +44,14 @@ Retina follows a **Hybrid Inference Architecture**, separating deterministic phy
 graph TD
     User[Frontend User] -->|Upload UI Screenshot| Web[FastHTML Server]
     
-    subgraph Physics Engine (OpenCV)
+    subgraph "Physics Engine (OpenCV)"
     Web -->|Raw Bytes| Preproc[Image Preprocessing]
     Preproc -->|Grayscale| Entropy[Entropy Engine]
     Preproc -->|Spectral Residual| Saliency[Saliency Engine]
     Preproc -->|Pixel Stats| Contrast[Contrast Engine]
     end
     
-    subgraph Intelligence Layer (Gemini 2.5/3.0)
+    subgraph "Intelligence Layer (Gemini 2.5/3.0)"
     Entropy -->|Clutter Score| Critic[Design Critic]
     Saliency -->|Heatmap| Critic
     Contrast -->|WCAG Verdict| Critic
