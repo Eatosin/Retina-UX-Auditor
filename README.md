@@ -73,9 +73,9 @@ Retina has been validated against industry-standard interfaces.
 
 | Website | Visual Entropy | Focus Score | Saliency Map |
 | :--- | :--- | :--- | :--- |
-| **Google** | **Low (5%)** | **High (92%)** | ![Google Heatmap](examples/google_heatmap.png) |
-| **Amazon** | **High (45%)** | **Low (30%)** | ![Amazon Heatmap](examples/amazon_heatmap.png) |
-| **Apple** | **Balanced (15%)** | **High (88%)** | ![Apple Heatmap](examples/apple_heatmap.png) |
+| **Google** | ** --- ** | ** --- ** | ![Google Heatmap](examples/google_heatmap.png) |
+| **Amazon** | ** --- ** | ** --- ** | ![Amazon Heatmap](examples/amazon_heatmap.png) |
+| **Apple** | ** --- ** | ** --- ** | ![Apple Heatmap](examples/apple_heatmap.png) |
 
 ---
 
